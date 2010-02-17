@@ -5,6 +5,7 @@ from OpenAPI.OpenAPI import APIHandler
 
 class Open311Service(APIHandler):
 	enforceAPIKey = True
+	apiKeyType = 'Open311 Write'
 
 	def getServiceTypes(self):
 		raise NotImplementedError('getServiceTypes should be defined in the subclass.')
@@ -16,12 +17,8 @@ class Open311Service(APIHandler):
 
 	def submitServiceRequest(self, ):
 		raise NotImplementedError('submitServiceRequest should be defined in the subclass.')
-		
 
-class Open311ReadService(Open311Service):
-	enforceAPIKey = True
-	apiKeyType = 'Open311 Read Only'
-	
+
 	#returns service request based on service request ID
 	def _get(self, args):
 		pass
@@ -44,10 +41,6 @@ class Open311ReadService(Open311Service):
 		elif self.format() == "xml":
 			self.write("<msg>n/a</msg>")
 
-
-class Open311WriteService(Open311ReadService):
-	enforceAPIKey = True
-	apiKeyType = 'Open311 Write'
 
 	#submits service request to 311 system	
 	def submit(self, args):
