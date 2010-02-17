@@ -1,9 +1,9 @@
 import json
 from pymongo import json_util
-from OpenAPI import OpenAPI.APIHandler
+from OpenAPI.OpenAPI import APIHandler
 
 
-class Open311Service(OpenAPI.APIHandler):
+class Open311Service(APIHandler):
 	enforceAPIKey = True
 
 	def getServiceTypes(self):
