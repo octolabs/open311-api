@@ -47,17 +47,17 @@ class Open311Service(APIHandler):
 		try:
 			serviceType = self.getServiceTypeDefinitions(args.get('servicecode', [None])[0])
 		except:
-			raise error.HTTPError("400 Bad Request", self.format(), 
+			raise error.HTTPError(400, 
 				"Open311 submitServiceRequest failed, Invalid ServiceType.")
 
 		address = args.get('address')
 		if not address:
-			raise error.HTTPError("400 Bad Request", self.format(), 
+			raise error.HTTPError(400, 
 				"Open311 submitServiceRequest failed, address parameter missing")
 
 		description = args.get('description')
 		if not description:
-			raise error.HTTPError("400 Bad Request", self.format(), 
+			raise error.HTTPError(400, 
 				"Open311 submitServiceRequest failed, description parameter missing")
 
 		self.submitServiceRequest(serviceType, address, description)
